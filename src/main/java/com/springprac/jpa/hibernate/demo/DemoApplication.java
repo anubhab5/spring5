@@ -1,5 +1,6 @@
 package com.springprac.jpa.hibernate.demo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +13,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.springprac.jpa.hibernate.demo.entity.Course;
+import com.springprac.jpa.hibernate.demo.entity.Employee;
+import com.springprac.jpa.hibernate.demo.entity.FullTimeEmployee;
+import com.springprac.jpa.hibernate.demo.entity.PartTimeEmployee;
 import com.springprac.jpa.hibernate.demo.entity.Review;
 import com.springprac.jpa.hibernate.demo.entity.Student;
 import com.springprac.jpa.hibernate.demo.repository.CourseRepository;
+import com.springprac.jpa.hibernate.demo.repository.EmployeeRepository;
 import com.springprac.jpa.hibernate.demo.repository.StudentRepository;
 
 @SpringBootApplication
@@ -28,6 +33,9 @@ public class DemoApplication implements CommandLineRunner {
 	
 	@Autowired
 	EntityManager em;
+	
+	@Autowired
+	EmployeeRepository empRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -36,16 +44,28 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
+
+		System.out.println("From the runner class");
 		
-		List<Student> studentList = studentRepo.getStudentList();
+//		Employee emp1= new FullTimeEmployee("Phulon", new BigDecimal(20000));
+//		Employee emp2= new PartTimeEmployee("Jhulon", new BigDecimal(20000));
+//
+//		empRepo.saveEmployee(emp1);
+//		empRepo.saveEmployee(emp2);
+		
+		System.out.println(empRepo.getAllEmployees());
+		
+		
+		
+//		List<Student> studentList = studentRepo.getStudentList();
 //		System.out.println(studentList);
 		
-		Student stud = studentRepo.findById(6l);
-		System.out.println(stud);
-		System.out.println(stud.getCourse());
+//		Student stud = studentRepo.findById(6l);
+//		System.out.println(stud);
+//		System.out.println(stud.getCourse());
 		
 //		studentRepo.insertStudentAndCourseHarcCoded();		
-		studentRepo.insertStudentAndCourse(new Student("Papa"), new Course("MicroServices mastering"));
+//		studentRepo.insertStudentAndCourse(new Student("Papa"), new Course("MicroServices mastering"));
 		
 		// Course someCourse = new Course("Test Course");
 		// courseRepo.addReviewsForCourse();		
@@ -72,7 +92,6 @@ public class DemoApplication implements CommandLineRunner {
 
 //		List<Course> c = cr.getCourseList();
 //		System.out.println(c);
-		System.out.println("From the runner class");
 
 //		sr.saveStudentWithPassport();
 //		Student s = sr.findById(4l);
