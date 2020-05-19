@@ -47,11 +47,11 @@ public class DemoApplication implements CommandLineRunner {
 
 		System.out.println("From the runner class");
 		
-//		Employee emp1= new FullTimeEmployee("Phulon", new BigDecimal(20000));
-//		Employee emp2= new PartTimeEmployee("Jhulon", new BigDecimal(20000));
-//
-//		empRepo.saveEmployee(emp1);
-//		empRepo.saveEmployee(emp2);
+		Employee emp1= new FullTimeEmployee("Phulon", new BigDecimal(20000));
+		Employee emp2= new PartTimeEmployee("Jhulon", new BigDecimal(20000));
+
+		empRepo.saveEmployee(emp1);
+		empRepo.saveEmployee(emp2);
 		
 		System.out.println(empRepo.getAllEmployees());
 		
